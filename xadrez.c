@@ -5,8 +5,10 @@ int main()
     char torre[50] = "torre";
     char bispo[50] = "bispo";
     char rainha[50] = "rainha";
+    char cavalo[50] = "cavalo";
     int pecaEscolhida;
     int torreMovimento, bispoMovimento, rainhaMovimento;
+    int cavaloMovimento, cavaloMovimento2 = 0;
 
     printf("\n======================\n");
     printf("Desafio Xadrez Novato\n");
@@ -18,8 +20,9 @@ int main()
         printf("1 - Torre\n");
         printf("2 - Bispo\n");
         printf("3 - Rainha\n");
+        printf("4 - Cavalo\n");
         printf("0 - Sair\n");
-        printf("Opcao: ");
+        printf("Opção: ");
         scanf("%d", &pecaEscolhida);
 
         switch (pecaEscolhida)
@@ -33,13 +36,16 @@ int main()
         case 3:
             printf("\nRainha selecionada.\n");
             break;
+        case 4:
+            printf("\nCavalo selecionado.\n");
+            break;
         case 0:
             printf("\nSaindo do programa...\n\n");
             return 0;
         default:
-            printf("\nOpcao invalida. Tente novamente.\n\n");
+            printf("\nOpção inválida. Tente novamente.\n\n");
         }
-    } while (pecaEscolhida < 0 || pecaEscolhida > 3);
+    } while (pecaEscolhida < 0 || pecaEscolhida > 4);
 
     if (pecaEscolhida == 1)
     {
@@ -56,11 +62,25 @@ int main()
             printf("O %s se moveu para a cima, direita!\n", bispo);
         }
     }
-    else
+    else if (pecaEscolhida == 3)
     {
         for (rainhaMovimento = 0; rainhaMovimento < 8; rainhaMovimento++)
         {
             printf("A %s se moveu para a esquerda!\n", rainha);
+        }
+    }
+    else
+    {
+        for (cavaloMovimento = 0; cavaloMovimento < 2; cavaloMovimento++)
+        {
+            printf("O %s se moveu para baixo!\n", cavalo);
+            cavaloMovimento2++;
+            
+            while (cavaloMovimento2 == 2)
+            {
+                printf("O %s se moveu uma casa para a esquerda!\n", cavalo);
+                cavaloMovimento2++;
+            }
         }
     }
     return 0;
