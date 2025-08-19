@@ -1,14 +1,64 @@
 #include <stdio.h>
 
-int main()
+void moverTorre()
 {
     char torre[50] = "torre";
+    int movimentoTorre;
+
+    for (movimentoTorre = 0; movimentoTorre < 5; movimentoTorre++)
+    {
+        printf("A %s se moveu para a direita!\n", torre);
+    }
+}
+
+void moverBispo()
+{
     char bispo[50] = "bispo";
+    int movimentoBispoVertical, movimentoBispoHorizontal;
+
+    for (movimentoBispoVertical = 0; movimentoBispoVertical < 5; movimentoBispoVertical++)
+    {
+        printf("O %s se moveu para cima!\n", bispo);
+
+        for (movimentoBispoHorizontal = 0; movimentoBispoHorizontal < 1; movimentoBispoHorizontal++)
+        {
+            printf("O %s se moveu para direita!\n", bispo);
+        }
+    }
+}
+
+void moverRainha()
+{
     char rainha[50] = "rainha";
+    int movimentoRainha;
+
+    for (movimentoRainha = 0; movimentoRainha < 8; movimentoRainha++)
+    {
+        printf("A %s se moveu para a esquerda!\n", rainha);
+    }
+}
+
+void moverCavalo()
+{
     char cavalo[50] = "cavalo";
-    int pecaEscolhida;
-    int torreMovimento, bispoMovimento, rainhaMovimento;
     int cavaloMovimento, cavaloMovimento2 = 0;
+
+    for (cavaloMovimento = 0; cavaloMovimento < 2; cavaloMovimento++)
+    {
+        printf("O %s se moveu para cima!\n", cavalo);
+        cavaloMovimento2++;
+
+        while (cavaloMovimento2 == 2)
+        {
+            printf("O %s se moveu para a direita!\n", cavalo);
+            cavaloMovimento2++;
+        }
+    }
+}
+
+int main()
+{
+    int pecaEscolhida;
 
     printf("\n======================\n");
     printf("Desafio Xadrez Novato\n");
@@ -29,15 +79,19 @@ int main()
         {
         case 1:
             printf("\nTorre selecionada.\n");
+            moverTorre();
             break;
         case 2:
             printf("\nBispo selecionado.\n");
+            moverBispo();
             break;
         case 3:
             printf("\nRainha selecionada.\n");
+            moverRainha();
             break;
         case 4:
             printf("\nCavalo selecionado.\n");
+            moverCavalo();
             break;
         case 0:
             printf("\nSaindo do programa...\n\n");
@@ -47,41 +101,5 @@ int main()
         }
     } while (pecaEscolhida < 0 || pecaEscolhida > 4);
 
-    if (pecaEscolhida == 1)
-    {
-        for (torreMovimento = 0; torreMovimento < 5; torreMovimento++)
-        {
-            printf("A %s se moveu para a direita!\n", torre);
-        }
-    }
-    else if (pecaEscolhida == 2)
-    {
-
-        for (bispoMovimento = 0; bispoMovimento < 5; bispoMovimento++)
-        {
-            printf("O %s se moveu para a cima, direita!\n", bispo);
-        }
-    }
-    else if (pecaEscolhida == 3)
-    {
-        for (rainhaMovimento = 0; rainhaMovimento < 8; rainhaMovimento++)
-        {
-            printf("A %s se moveu para a esquerda!\n", rainha);
-        }
-    }
-    else
-    {
-        for (cavaloMovimento = 0; cavaloMovimento < 2; cavaloMovimento++)
-        {
-            printf("O %s se moveu para baixo!\n", cavalo);
-            cavaloMovimento2++;
-            
-            while (cavaloMovimento2 == 2)
-            {
-                printf("O %s se moveu uma casa para a esquerda!\n", cavalo);
-                cavaloMovimento2++;
-            }
-        }
-    }
     return 0;
 }
